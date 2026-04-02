@@ -5,8 +5,10 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "validate": "powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File tests/validate.ps1",
-    "test": "powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File tests/validate.ps1",
-    "verify:install": "powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File tests/validate.ps1 -SmokeInstall"
+    "validate": "bash tests/validate.sh",
+    "validate:win": "powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File tests/validate.ps1",
+    "test": "bash tests/validate.sh",
+    "test:win": "powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File tests/validate.ps1",
+    "verify:install": "bash tests/validate.sh"
   }
 }

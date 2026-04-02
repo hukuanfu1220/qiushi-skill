@@ -83,7 +83,7 @@ graph TD
 
 - **Windows**：默认使用 PowerShell hook，无需额外安装 Bash
 - **macOS / Linux**：需要可用的 `bash` 或 `sh`
-- **验证脚本**：仓库内置 `tests/validate.ps1`，可用于安装后自检
+- **验证脚本**：仓库内置 `tests/validate.sh`（macOS/Linux）和 `tests/validate.ps1`（Windows），可用于安装后自检
 
 ### 方式一：手动安装
 
@@ -92,18 +92,33 @@ graph TD
 ```bash
 git clone https://github.com/HughYau/qiushi-skill
 cd qiushi-skill
-claude plugin add .
+claude --plugin-dir .
 ```
 
-如果你已经克隆过仓库，进入目录后直接执行 `claude plugin add .` 即可。
+`--plugin-dir` 会在当前会话加载插件。如需每次会话都自动加载，可以设置 shell alias：
 
-Windows 说明：
-- 从 `1.2.0` 起，SessionStart hook 优先走原生 PowerShell，不再依赖 Git Bash / WSL
-- 如果你的环境禁用了 PowerShell 脚本执行，请使用 `-ExecutionPolicy Bypass` 运行验证脚本确认安装
+```bash
+# 加入 ~/.bashrc 或 ~/.zshrc
+alias claude='claude --plugin-dir /path/to/qiushi-skill'
+```
 
-macOS / Linux 说明：
+**macOS / Linux 验证：**
+
+```bash
+bash tests/validate.sh
+```
+
 - hook 入口使用 `hooks/session-start`
 - 请确认系统上有 `bash` 或 `sh`
+
+**Windows 验证：**
+
+```powershell
+powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File tests/validate.ps1
+```
+
+- 从 `1.2.0` 起，SessionStart hook 优先走原生 PowerShell，不再依赖 Git Bash / WSL
+- 如果你的环境禁用了 PowerShell 脚本执行，请使用 `-ExecutionPolicy Bypass` 运行验证脚本确认安装
 
 #### Cursor
 
@@ -142,7 +157,7 @@ macOS / Linux 说明：
    cd qiushi-skill
 
 3. 如果当前环境安装了 Claude Code，执行：
-   claude plugin add .
+   claude --plugin-dir .
 
 4. 如果当前环境是 Cursor，请把这个项目目录注册到 Cursor 的插件路径。
 
@@ -154,7 +169,9 @@ macOS / Linux 说明：
    hooks/session-start.ps1
    hooks/session-start
 
-6. 最后运行：
+6. 最后运行验证（macOS/Linux 用 bash，Windows 用 powershell）：
+   bash tests/validate.sh
+   # 或 Windows：
    powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File tests/validate.ps1
 
 7. 告诉我如何验证安装是否成功。
@@ -190,13 +207,19 @@ macOS / Linux 说明：
 
 ### 安装验证
 
+macOS / Linux：
+
+```bash
+bash tests/validate.sh
+```
+
 Windows：
 
 ```powershell
 powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File tests/validate.ps1
 ```
 
-该脚本会检查：
+验证脚本会检查：
 - JSON 配置是否有效
 - hook 文件与命令文件是否齐全
 - `SKILL.md` / agent / command 的 frontmatter 是否完整
@@ -261,7 +284,8 @@ qiushi-skill/
 │   └── workflows/
 │       └── SKILL.md
 ├── tests/
-│   └── validate.ps1                  # 配置、frontmatter、hook、链接自检
+│   ├── validate.sh                   # macOS/Linux 验证脚本
+│   └── validate.ps1                  # Windows 验证脚本
 ├── docs/
 │   ├── platforms.md
 │   ├── README.codex.md
