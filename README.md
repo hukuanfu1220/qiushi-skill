@@ -8,6 +8,13 @@
 
 > ✊ "世界上怕就怕'认真'二字。"
 
+
+<p align="center">
+  <a href="https://hughyau.com/qiushi-skill/">
+    <img src="https://img.shields.io/badge/%E5%85%88%E7%9C%8B%E4%BB%8B%E7%BB%8D%E9%A1%B5-%E6%9B%B4%E7%9B%B4%E8%A7%82%E5%9C%B0%E7%90%86%E8%A7%A3%E6%B1%82%E6%98%AF%20-8b1a1a?style=for-the-badge&labelColor=f5efe6&color=8b1a1a" alt="先看介绍页">
+  </a>
+</p>
+
 ---
 
 **你的 AI 不应该是一个唯唯诺诺的工具。它应该是一个先看事实、再下判断的行动者。**
