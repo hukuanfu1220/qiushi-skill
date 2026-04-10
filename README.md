@@ -95,7 +95,8 @@ graph TD
 
 这里收集了大家在使用求是 Skill 过程中的真实案例。欢迎在 [Discussions](https://github.com/HughYau/qiushi-skill/discussions) 中分享你使用经验帮助项目改进！
 
-- 📖 **[分析外行指导内行问题](https://mp.weixin.qq.com/s/bg5cgSAscy37T4gv9YJG0A)**：展示了如何用求是 Skill 拆解复杂的职场现象（用户分享）。
+- 📖 **[分析外行指导内行问题](https://mp.weixin.qq.com/s/bg5cgSAscy37T4gv9YJG0A)**：展示了如何用求是 Skill 拆解复杂的职场现象。
+- 🤖 **[ZZZ 白话讲 AI —— 用“求是方法论”写一本零基础 AI 认知书](https://github.com/mfkyddh/ZZZ-Simple-AI)**：以“求是”方法论组织 AI 入门知识。
 
 ## 📦 安装
 
